@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiCode, FiCheck } from 'react-icons/fi';
+import { FiArrowRight, FiCheck } from 'react-icons/fi';
 import Button from '../components/Button';
 
 const Hero = () => {
@@ -116,19 +116,19 @@ const Hero = () => {
                                     </div>
                                     <div className="pl-6 flex">
                                         <span className="text-green-500 mr-2">diseño:</span>
-                                        <span className="text-yellow-500">'Excepcional'</span><span className="text-gray-500">,</span>
+                                        <span className="text-yellow-500">&apos;Excepcional&apos;</span><span className="text-gray-500">,</span>
                                     </div>
                                     <div className="pl-6 flex">
                                         <span className="text-green-500 mr-2">funcionalidad:</span>
-                                        <span className="text-yellow-500">'Perfecta'</span><span className="text-gray-500">,</span>
+                                        <span className="text-yellow-500">&apos;Perfecta&apos;</span><span className="text-gray-500">,</span>
                                     </div>
                                     <div className="pl-6 flex">
                                         <span className="text-green-500 mr-2">optimización:</span>
-                                        <span className="text-yellow-500">'Al máximo'</span><span className="text-gray-500">,</span>
+                                        <span className="text-yellow-500">&apos;Al máximo&apos;</span><span className="text-gray-500">,</span>
                                     </div>
                                     <div className="pl-6 flex">
                                         <span className="text-green-500 mr-2">experiencia:</span>
-                                        <span className="text-yellow-500">'Inolvidable'</span>
+                                        <span className="text-yellow-500">&apos;Inolvidable&apos;</span>
                                     </div>
                                     <div className="flex">
                                         <span className="text-purple-500">{`}`}</span><span className="text-gray-500">;</span>

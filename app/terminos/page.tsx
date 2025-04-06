@@ -34,9 +34,9 @@ const Terminos = () => {
 
                         <h2 className="text-2xl font-bold mt-8 mb-4">2. Definiciones</h2>
                         <p>
-                            "KuhmDev" o "nosotros" se refiere a nuestra agencia de desarrollo.
-                            "Cliente" o "usted" se refiere a la persona o entidad que contrata nuestros servicios.
-                            "Servicios" se refiere a cualquier trabajo de desarrollo web, programación o consultoría que proporcionamos.
+                            &quot;KuhmDev&quot; o &quot;nosotros&quot; se refiere a nuestra agencia de desarrollo.
+                            &quot;Cliente&quot; o &quot;usted&quot; se refiere a la persona o entidad que contrata nuestros servicios.
+                            &quot;Servicios&quot; se refiere a cualquier trabajo de desarrollo web, programación o consultoría que proporcionamos.
                         </p>
 
                         <h2 className="text-2xl font-bold mt-8 mb-4">3. Servicios</h2>

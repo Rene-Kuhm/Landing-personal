@@ -5,8 +5,8 @@ const JsonLd = () => {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "KuhmDev",
-        "url": "https://kuhmdev.com",
-        "logo": "https://kuhmdev.com/images/logo.png",
+        "url": "https://kuhmdev.com.ar",
+        "logo": "https://kuhmdev.com.ar/images/logo.png",
         "description": "Expertos en desarrollo web, programación y consultoría digital. Creamos soluciones a medida que impulsan el crecimiento de tu negocio.",
         "address": {
             "@type": "PostalAddress",
