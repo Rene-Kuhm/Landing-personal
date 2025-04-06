@@ -74,35 +74,35 @@ const Hero = () => {
                                 </div>
                                 <div className="space-y-2 font-mono text-sm">
                                     <div className="flex">
-                                        <span className="text-pink-500 mr-2">const</span>
-                                        <span className="text-blue-500 mr-2">tuProyecto</span>
+                                        <span className="text-[#d4306d] dark:text-[#ff4585] mr-2">const</span>
+                                        <span className="text-[#0a58ca] dark:text-[#5b98fc] mr-2">tuProyecto</span>
                                         <span className="mr-2">=</span>
-                                        <span className="text-purple-500">{`{`}</span>
+                                        <span className="text-[#7830a9] dark:text-[#af56f5]">{`{`}</span>
                                     </div>
                                     <div className="pl-6 flex">
-                                        <span className="text-green-500 mr-2">diseño:</span>
-                                        <span className="text-yellow-500">&apos;Excepcional&apos;</span><span className="text-gray-500">,</span>
+                                        <span className="text-[#05783b] dark:text-[#33c576] mr-2">diseño:</span>
+                                        <span className="text-[#8a6004] dark:text-[#ffc547]">&apos;Excepcional&apos;</span><span className="text-[#374151] dark:text-[#d1d5db]">,</span>
                                     </div>
                                     <div className="pl-6 flex">
-                                        <span className="text-green-500 mr-2">funcionalidad:</span>
-                                        <span className="text-yellow-500">&apos;Perfecta&apos;</span><span className="text-gray-500">,</span>
+                                        <span className="text-[#05783b] dark:text-[#33c576] mr-2">funcionalidad:</span>
+                                        <span className="text-[#8a6004] dark:text-[#ffc547]">&apos;Perfecta&apos;</span><span className="text-[#374151] dark:text-[#d1d5db]">,</span>
                                     </div>
                                     <div className="pl-6 flex">
-                                        <span className="text-green-500 mr-2">optimización:</span>
-                                        <span className="text-yellow-500">&apos;Al máximo&apos;</span><span className="text-gray-500">,</span>
+                                        <span className="text-[#05783b] dark:text-[#33c576] mr-2">optimización:</span>
+                                        <span className="text-[#8a6004] dark:text-[#ffc547]">&apos;Al máximo&apos;</span><span className="text-[#374151] dark:text-[#d1d5db]">,</span>
                                     </div>
                                     <div className="pl-6 flex">
-                                        <span className="text-green-500 mr-2">experiencia:</span>
-                                        <span className="text-yellow-500">&apos;Inolvidable&apos;</span>
+                                        <span className="text-[#05783b] dark:text-[#33c576] mr-2">experiencia:</span>
+                                        <span className="text-[#8a6004] dark:text-[#ffc547]">&apos;Inolvidable&apos;</span>
                                     </div>
                                     <div className="flex">
-                                        <span className="text-purple-500">{`}`}</span><span className="text-gray-500">;</span>
+                                        <span className="text-[#7830a9] dark:text-[#af56f5]">{`}`}</span><span className="text-[#374151] dark:text-[#d1d5db]">;</span>
                                     </div>
                                     <div className="mt-4 flex items-center">
-                                        <span className="text-blue-500 mr-2">tuProyecto</span>
-                                        <span className="text-gray-500 mr-2">.</span>
-                                        <span className="text-purple-500 mr-2">iniciar</span>
-                                        <span className="text-pink-500">{`( )`}</span><span className="text-gray-500">;</span>
+                                        <span className="text-[#0a58ca] dark:text-[#5b98fc] mr-2">tuProyecto</span>
+                                        <span className="text-[#374151] dark:text-[#d1d5db] mr-2">.</span>
+                                        <span className="text-[#7830a9] dark:text-[#af56f5] mr-2">iniciar</span>
+                                        <span className="text-[#d4306d] dark:text-[#ff4585]">{`( )`}</span><span className="text-[#374151] dark:text-[#d1d5db]">;</span>
                                     </div>
                                 </div>
                             </div>

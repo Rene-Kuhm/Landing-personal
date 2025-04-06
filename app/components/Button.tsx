@@ -25,12 +25,12 @@ const Button = ({
     // Clases base según el variante
     const baseClasses = 'inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg transition-colors duration-200 ease-in-out';
 
-    // Clases específicas por variante
+    // Clases específicas por variante con mejor contraste
     const variantClasses = {
-        primary: 'bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white shadow-md hover:shadow-lg',
-        secondary: 'bg-[var(--secondary)] hover:bg-[var(--accent)] text-white shadow-md hover:shadow-lg',
-        outline: 'bg-transparent border-2 border-current text-[var(--primary)] hover:text-[var(--primary-dark)]',
-        ghost: 'bg-transparent text-[var(--primary)] hover:text-[var(--primary-dark)] hover:bg-[var(--primary)]/10 px-4'
+        primary: 'bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-dark)]',
+        secondary: 'bg-[var(--secondary)] hover:bg-[var(--accent)] text-white shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]',
+        outline: 'bg-transparent border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)]/10 focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]',
+        ghost: 'bg-transparent text-[var(--primary)] hover:text-[var(--primary-dark)] hover:bg-[var(--primary)]/15 px-4 focus:ring-2 focus:ring-[var(--primary)]/20'
     };
 
     // Clases para estado deshabilitado
@@ -42,7 +42,7 @@ const Button = ({
     // Renderizar como link o botón
     if (href) {
         return (
-            <Link href={href} className={buttonClasses}>
+            <Link href={href} className={buttonClasses} aria-disabled={disabled}>
                 {children}
             </Link>
         );

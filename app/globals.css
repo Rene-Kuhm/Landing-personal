@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 :root {
-  --primary: #FF6B49; /* Naranja del logo */
-  --primary-dark: #E55A3D; /* Naranja más oscuro */
-  --secondary: #4E295B; /* Morado del logo */
-  --accent: #743F87; /* Morado claro complementario */
+  --primary: #E85332; /* Naranja del logo con mayor contraste */
+  --primary-dark: #D03E20; /* Naranja más oscuro ajustado */
+  --secondary: #3A1C47; /* Morado del logo con mayor contraste */
+  --accent: #5F2B6E; /* Morado claro complementario ajustado */
   --foreground-rgb: 33, 33, 33;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 245, 245, 250;
@@ -117,4 +117,37 @@ body {
 
 .dark .prose-invert {
   color: rgb(229, 231, 235);
+}
+
+/* Mejoras de contraste para elementos específicos */
+.bg-\[var\(--primary\)\]\/10 {
+  background-color: rgba(232, 83, 50, 0.15); /* Mayor opacidad para mejor contraste */
+}
+
+.text-\[var\(--primary\)\] {
+  color: #E85332; /* Color primario con mayor contraste */
+}
+
+.text-gray-500 {
+  color: #64748b; /* Gris más oscuro para mejor contraste */
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8; /* Gris más claro en modo oscuro */
+}
+
+.text-gray-700 {
+  color: #374151; /* Gris más oscuro para texto */
+}
+
+.dark .text-gray-300 {
+  color: #d1d5db; /* Gris más claro en modo oscuro */
+}
+
+footer .text-gray-500 {
+  color: #94a3b8; /* Gris más claro para mejor contraste en el footer */
+}
+
+.dark footer .text-gray-500 {
+  color: #cbd5e1; /* Gris aún más claro en modo oscuro para el footer */
 }

@@ -10,10 +10,10 @@ export default function Head() {
       {/* Estilos críticos incrustados para evitar bloqueo de renderizado */}
       <style jsx global>{`
         :root {
-          --primary: #FF6B49;
-          --primary-dark: #E55A3D;
-          --secondary: #4E295B;
-          --accent: #743F87;
+          --primary: #E85332;
+          --primary-dark: #D03E20;
+          --secondary: #3A1C47;
+          --accent: #5F2B6E;
           --foreground-rgb: 33, 33, 33;
           --background-start-rgb: 255, 255, 255;
           --background-end-rgb: 245, 245, 250;
