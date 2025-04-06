@@ -1,108 +1,103 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FiMonitor, FiSmartphone, FiShoppingCart, FiSearch, FiServer, FiCode } from 'react-icons/fi';
-
-const servicios = [
-    {
-        icon: <FiMonitor className="w-8 h-8" />,
-        title: 'Diseño Web',
-        description: 'Creamos sitios web modernos, responsivos y visualmente impactantes que reflejan la identidad de tu marca.',
-    },
-    {
-        icon: <FiSmartphone className="w-8 h-8" />,
-        title: 'Desarrollo Móvil',
-        description: 'Desarrollamos aplicaciones móviles nativas e híbridas para iOS y Android que mejoran la experiencia de tus usuarios.',
-    },
-    {
-        icon: <FiShoppingCart className="w-8 h-8" />,
-        title: 'Comercio Electrónico',
-        description: 'Implementamos tiendas online completas con pasarelas de pago seguras y experiencias de compra optimizadas.',
-    },
-    {
-        icon: <FiSearch className="w-8 h-8" />,
-        title: 'SEO y Marketing Digital',
-        description: 'Optimizamos tu presencia en buscadores y creamos estrategias de marketing digital para aumentar tu visibilidad.',
-    },
-    {
-        icon: <FiServer className="w-8 h-8" />,
-        title: 'Desarrollo Backend',
-        description: 'Construimos APIs robustas, servicios web y sistemas de gestión con las últimas tecnologías.',
-    },
-    {
-        icon: <FiCode className="w-8 h-8" />,
-        title: 'Consultoría Tecnológica',
-        description: 'Asesoramos en la selección de tecnologías y arquitecturas para optimizar tus proyectos digitales.',
-    },
-];
+import React, { useEffect, useState } from 'react';
+import { FiArrowRight } from 'react-icons/fi';
+import Button from '../components/Button';
 
 const Servicios = () => {
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-        threshold: 0.1,
-    });
+    const [isInView, setIsInView] = useState(false);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-            },
-        },
-    };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsInView(true);
+        }, 100);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                ease: 'easeOut',
-            },
+        return () => clearTimeout(timer);
+    }, []);
+
+    const services = [
+        {
+            id: 1,
+            title: 'Desarrollo Web',
+            description: 'Sitios web y aplicaciones personalizadas con las últimas tecnologías y optimizados para SEO.',
+            icon: '/images/icon-web.svg',
         },
-    };
+        {
+            id: 2,
+            title: 'Comercio Electrónico',
+            description: 'Tiendas online intuitivas y seguras que aumentan tus ventas y mejoran la experiencia de compra.',
+            icon: '/images/icon-ecommerce.svg',
+        },
+        {
+            id: 3,
+            title: 'Aplicaciones Móviles',
+            description: 'Apps nativas y cross-platform que destacan en las tiendas de aplicaciones con experiencias premium.',
+            icon: '/images/icon-mobile.svg',
+        },
+        {
+            id: 4,
+            title: 'Sistemas a Medida',
+            description: 'Software personalizado para optimizar procesos internos y mejorar la productividad empresarial.',
+            icon: '/images/icon-software.svg',
+        },
+        {
+            id: 5,
+            title: 'Consultoría Digital',
+            description: 'Asesoramiento estratégico para mejorar tu presencia online y escalar tu negocio digital.',
+            icon: '/images/icon-consulting.svg',
+        },
+        {
+            id: 6,
+            title: 'Marketing Digital',
+            description: 'Estrategias de posicionamiento, SEO y SEM para aumentar tu visibilidad y conseguir leads.',
+            icon: '/images/icon-marketing.svg',
+        },
+    ];
 
     return (
-        <section id="servicios" className="py-20 bg-gray-50 dark:bg-[#0a0a14]">
+        <section id="servicios" className="py-20 bg-gray-50 dark:bg-[#0f1119]">
             <div className="container-custom">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <span className="inline-block px-4 py-1.5 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-sm font-medium mb-4">
-                        Nuestros Servicios
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                        Soluciones <span className="text-gradient">tecnológicas</span> a medida
-                    </h2>
-                    <p className="text-gray-700 dark:text-gray-300">
-                        Ofrecemos una amplia gama de servicios digitales para ayudar a tu negocio a destacar en el mundo digital.
-                        Desde el diseño hasta la implementación y mantenimiento.
+                <div
+                    className="text-center max-w-3xl mx-auto mb-16"
+                    style={{
+                        opacity: isInView ? 1 : 0,
+                        transform: `translateY(${isInView ? 0 : 20}px)`,
+                        transition: 'opacity 0.5s ease, transform 0.5s ease'
+                    }}
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestros Servicios</h2>
+                    <p className="text-lg text-gray-700 dark:text-gray-300">
+                        Ofrecemos soluciones digitales completas para todos los aspectos de tu negocio online
                     </p>
                 </div>
 
-                <motion.div
-                    ref={ref}
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={inView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    {servicios.map((servicio, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            className="bg-white dark:bg-[#1a1a2e] rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-800"
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {services.map((service, index) => (
+                        <div
+                            key={service.id}
+                            className="bg-white dark:bg-[#1a1c29] rounded-xl shadow-md hover:shadow-xl p-6 transition-all duration-300"
+                            style={{
+                                opacity: isInView ? 1 : 0,
+                                transform: `translateY(${isInView ? 0 : 20}px)`,
+                                transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`
+                            }}
                         >
-                            <div className="w-16 h-16 bg-[var(--primary)]/10 text-[var(--primary)] rounded-lg flex items-center justify-center mb-6">
-                                {servicio.icon}
+                            <div className="mb-4 text-[var(--primary)]">
+                                {/* Placeholder para ícono */}
+                                <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center">
+                                    <FiArrowRight className="text-2xl" />
+                                </div>
                             </div>
-                            <h3 className="text-xl font-bold mb-3">{servicio.title}</h3>
-                            <p className="text-gray-700 dark:text-gray-300">{servicio.description}</p>
-                        </motion.div>
+                            <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-400 mb-4">
+                                {service.description}
+                            </p>
+                            <Button href="#contacto" variant="ghost" className="mt-2 p-0">
+                                Más información <FiArrowRight className="ml-2" />
+                            </Button>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

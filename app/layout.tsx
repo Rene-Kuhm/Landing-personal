@@ -98,17 +98,25 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
 
-        {/* Carga diferida de scripts */}
+        {/* Carga diferida de scripts de analytics con estrategia lazyOnload */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXX');
+            gtag('config', 'G-XXXXXXXX', {
+              send_page_view: false
+            });
+            // Enviar pageview con retraso después de que la página se cargue completamente
+            window.addEventListener('load', function() {
+              setTimeout(function() {
+                gtag('event', 'page_view');
+              }, 2000);
+            });
           `}
         </Script>
       </body>

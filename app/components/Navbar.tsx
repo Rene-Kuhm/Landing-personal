@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import Button from './Button';
 import Logo from './Logo';
@@ -58,6 +57,7 @@ const Navbar = () => {
                 <button
                     className="md:hidden text-2xl"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Menú"
                 >
                     {isMenuOpen ? <FiX /> : <FiMenu />}
                 </button>
@@ -65,11 +65,11 @@ const Navbar = () => {
 
             {/* Mobile menu */}
             {isMenuOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+                <div
                     className="md:hidden bg-white dark:bg-[#0f0f1e] shadow-lg"
+                    style={{
+                        animation: 'slideDown 0.3s ease-out forwards'
+                    }}
                 >
                     <div className="container-custom py-4 flex flex-col space-y-4">
                         {navItems.map((item) => (
@@ -82,11 +82,11 @@ const Navbar = () => {
                                 {item.title}
                             </Link>
                         ))}
-                        <Button href="#contacto" variant="primary" fullWidth className="mt-4">
+                        <Button href="#contacto" variant="primary" className="mt-4 w-full">
                             Contáctanos
                         </Button>
                     </div>
-                </motion.div>
+                </div>
             )}
         </nav>
     );

@@ -1,32 +1,16 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import { FiArrowRight, FiCheck } from 'react-icons/fi';
 import Button from '../components/Button';
 
 const Hero = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-            },
-        },
-    };
+    const [isLoaded, setIsLoaded] = useState(false);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: [0.6, 0.05, 0.01, 0.9],
-            },
-        },
-    };
+    useEffect(() => {
+        // Marcar como cargado después del montaje inicial
+        setIsLoaded(true);
+    }, []);
 
     const benefitItems = [
         'Expertos en desarrollo web',
@@ -39,37 +23,32 @@ const Hero = () => {
         <section id="home" className="pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
             <div className="container-custom">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="text-center lg:text-left"
-                    >
-                        <motion.span
-                            variants={itemVariants}
+                    <div className="text-center lg:text-left">
+                        <span
                             className="inline-block px-4 py-1.5 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-sm font-medium mb-4"
+                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}
                         >
                             Agencia de Desarrollo Web & Consultoría
-                        </motion.span>
+                        </span>
 
-                        <motion.h1
-                            variants={itemVariants}
+                        <h1
                             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                            style={{ opacity: 1 }}
                         >
                             Transformamos <span className="text-gradient">ideas</span> en <span className="text-gradient">experiencias digitales</span> excepcionales
-                        </motion.h1>
+                        </h1>
 
-                        <motion.p
-                            variants={itemVariants}
+                        <p
                             className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0"
+                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s ease 0.2s' }}
                         >
                             Somos expertos en desarrollo web, programación y consultoría digital.
                             Creamos soluciones a medida que impulsan el crecimiento de tu negocio.
-                        </motion.p>
+                        </p>
 
-                        <motion.div
-                            variants={itemVariants}
+                        <div
                             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
+                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s ease 0.3s' }}
                         >
                             <Button href="#contacto" variant="primary">
                                 Solicita una consulta <FiArrowRight className="ml-2" />
@@ -77,11 +56,11 @@ const Hero = () => {
                             <Button href="#proyectos" variant="outline">
                                 Ver proyectos
                             </Button>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            variants={itemVariants}
+                        <div
                             className="grid grid-cols-2 gap-3 max-w-md mx-auto lg:mx-0"
+                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s ease 0.4s' }}
                         >
                             {benefitItems.map((item, index) => (
                                 <div key={index} className="flex items-center">
@@ -89,14 +68,12 @@ const Hero = () => {
                                     <span className="text-sm">{item}</span>
                                 </div>
                             ))}
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
+                    <div
                         className="relative"
+                        style={{ opacity: isLoaded ? 1 : 0, transform: `scale(${isLoaded ? 1 : 0.9})`, transition: 'opacity 0.6s, transform 0.6s' }}
                     >
                         <div className="relative z-10 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] p-1 rounded-2xl shadow-2xl">
                             <div className="bg-white dark:bg-[#0f0f1e] rounded-xl p-6">
@@ -146,7 +123,7 @@ const Hero = () => {
                         {/* Decorative elements */}
                         <div className="absolute -top-6 -right-6 w-20 h-20 bg-[var(--secondary)] opacity-20 rounded-full blur-xl"></div>
                         <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[var(--accent)] opacity-20 rounded-full blur-xl"></div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
