@@ -74,9 +74,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/logo.png', sizes: 'any' }
+      { url: '/images/logo.webp', sizes: 'any' }
     ],
-    apple: '/images/logo.png',
+    apple: '/images/logo.webp',
   },
   verification: {
     google: "verificación-google", // Reemplazar con tu código real cuando lo tengas
@@ -95,9 +95,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="preload"
-          href="/images/logo.png"
+          href="/images/logo.webp"
           as="image"
-          type="image/png"
+          type="image/webp"
           fetchPriority="high"
         />
         <link

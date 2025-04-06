@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { FiGithub, FiLinkedin, FiInstagram, FiArrowUp } from 'react-icons/fi';
 import { FaFacebook } from 'react-icons/fa';
+import OptimizedImage from './OptimizedImage';
 
 const Footer = () => {
     const scrollToTop = () => {
@@ -22,8 +22,8 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     <div>
                         <div className="mb-4">
-                            <Image
-                                src="/images/logo.png"
+                            <OptimizedImage
+                                src="/images/logo.webp"
                                 alt="KuhmDev Logo"
                                 width={180}
                                 height={60}

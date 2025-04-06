@@ -1,39 +1,73 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
+import { useEffect, useState } from 'react';
 
-type OptimizedImageProps = {
+interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
     src: string;
-    alt: string;
-    width?: number;
-    height?: number;
-    className?: string;
-    priority?: boolean;
+    fallbackSrc?: string;
     quality?: number;
-};
+}
 
-export default function OptimizedImage({
+/**
+ * Componente que automatiza la carga de imágenes optimizadas
+ * Detecta y utiliza formatos modernos (WebP, AVIF) cuando están disponibles
+ */
+const OptimizedImage: React.FC<OptimizedImageProps> = ({
     src,
+    fallbackSrc,
     alt,
-    width,
-    height,
-    className = '',
-    priority = false,
-    quality = 80
-}: OptimizedImageProps) {
-    // La imagen se usa directamente desde la fuente proporcionada
+    quality = 80,
+    ...rest
+}) => {
+    const [imgSrc, setImgSrc] = useState<string>(src);
+    const [isError, setIsError] = useState<boolean>(false);
+
+    // Intentar usar la versión WebP si está disponible
+    useEffect(() => {
+        const checkForWebP = async () => {
+            // Verificar si es una imagen PNG o JPG (para convertir a WebP)
+            if (
+                (src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg')) &&
+                !src.includes('.webp')
+            ) {
+                // Crear la ruta del archivo WebP
+                const webpSrc = src.substring(0, src.lastIndexOf('.')) + '.webp';
+
+                try {
+                    // Intentar cargar la imagen WebP
+                    const response = await fetch(webpSrc, { method: 'HEAD' });
+                    if (response.ok) {
+                        setImgSrc(webpSrc);
+                    }
+                } catch {
+                    // Si hay un error, mantener la fuente original
+                    console.log(`Usando imagen original: ${src}`);
+                }
+            }
+        };
+
+        checkForWebP();
+    }, [src]);
+
+    // Manejar errores de carga
+    const handleError = () => {
+        if (!isError && fallbackSrc) {
+            setIsError(true);
+            setImgSrc(fallbackSrc);
+        }
+    };
+
     return (
         <Image
-            src={src}
+            src={imgSrc}
             alt={alt}
-            width={width}
-            height={height}
-            className={className}
-            priority={priority}
             quality={quality}
-            loading={priority ? "eager" : "lazy"}
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+            onError={handleError}
+            {...rest}
         />
     );
-} 
+};
+
+export default OptimizedImage; 

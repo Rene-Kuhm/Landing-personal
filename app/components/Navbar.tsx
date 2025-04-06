@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiMenu, FiX } from 'react-icons/fi';
 import Button from './Button';
-import Logo from './Logo';
+import OptimizedImage from './OptimizedImage';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +33,16 @@ const Navbar = () => {
     return (
         <nav className={navbarClasses}>
             <div className="container-custom flex justify-between items-center">
-                <Logo />
+                <Link href="/" className="flex items-center">
+                    <OptimizedImage
+                        src="/images/logo.webp"
+                        alt="KuhmDev"
+                        width={150}
+                        height={50}
+                        priority={true}
+                        className="h-auto"
+                    />
+                </Link>
 
                 {/* Desktop menu */}
                 <div className="hidden md:flex items-center space-x-8">
