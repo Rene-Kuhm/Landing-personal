@@ -1,24 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agencia Web
 
-## Getting Started
+Sitio web para una agencia de desarrollo web y consultoría digital.
 
-First, run the development server:
+## Configuración de Variables de Entorno
+
+Para que el formulario de contacto funcione correctamente, necesitas configurar las siguientes variables de entorno:
+
+1. Crea un archivo `.env.local` en la raíz del proyecto con las siguientes variables:
+
+```
+EMAIL_USER=tu_correo@gmail.com
+EMAIL_PASS=tu_contraseña_de_aplicacion
+EMAIL_RECIPIENT=correo_destinatario@gmail.com
+```
+
+### Cómo obtener una contraseña de aplicación para Gmail:
+
+1. Ve a tu cuenta de Google > Gestionar tu Cuenta de Google
+2. Ve a "Seguridad"
+3. Habilita la verificación en dos pasos si no la tienes habilitada
+4. Ve a "Contraseñas de aplicaciones"
+5. Selecciona "Otra" como tipo de aplicación y dale un nombre (por ejemplo, "Mi Sitio Web")
+6. Google generará una contraseña de aplicación de 16 caracteres. Cópiala y úsala en tu variable `EMAIL_PASS`
+
+## Desarrollo
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
+
+## Tecnologías utilizadas
+
+- Next.js
+- React
+- Tailwind CSS
+- Framer Motion
+- Nodemailer
 
 ## Learn More
 
