@@ -1,6 +1,21 @@
-# Agencia Web
+# Agencia Web - KuhmDev
 
-Sitio web para una agencia de desarrollo web y consultoría digital.
+Sitio web para una agencia de desarrollo web y consultoría digital, optimizado para rendimiento y SEO.
+
+![Rendimiento en Mobile](./public/images/performance-mobile.png)
+![Rendimiento en Desktop](./public/images/performance-desktop.png)
+
+## Características Clave
+
+- Diseño responsive para móviles y escritorio
+- Optimización de imágenes automática (WebP/AVIF)
+- Puntuación perfecta en SEO
+- Excelente puntuación en Accesibilidad
+- Carga rápida (100/100 en Rendimiento)
+- Servidor de contacto integrado
+- Páginas legales (Términos y Condiciones, Política de Privacidad)
+- Animaciones suaves con Framer Motion
+- Modo oscuro/claro
 
 ## Configuración de Variables de Entorno
 
@@ -23,6 +38,32 @@ EMAIL_RECIPIENT=correo_destinatario@gmail.com
 5. Selecciona "Otra" como tipo de aplicación y dale un nombre (por ejemplo, "Mi Sitio Web")
 6. Google generará una contraseña de aplicación de 16 caracteres. Cópiala y úsala en tu variable `EMAIL_PASS`
 
+## Mejoras Implementadas
+
+### Optimización de Imágenes
+- Conversión automática de imágenes a formatos modernos (WebP/AVIF)
+- Carga diferida de imágenes no críticas
+- Priorización de imágenes LCP (Largest Contentful Paint)
+- Script de optimización automática de imágenes durante la compilación
+
+### Rendimiento
+- Reducción del JavaScript no utilizado
+- Optimización de la carga de la página (CSS crítico)
+- Componentes del lado del cliente solo cuando es necesario
+- Estrategias de pre-carga para recursos críticos
+
+### Accesibilidad
+- Etiquetas semánticas adecuadas
+- Contrastes de color adecuados
+- Navegación por teclado mejorada
+- Textos alternativos para todas las imágenes
+
+### SEO
+- Metadatos optimizados
+- Estructura de encabezados correcta
+- URLs amigables
+- Sitemap y robots.txt
+
 ## Desarrollo
 
 ```bash
@@ -42,11 +83,35 @@ npm start
 
 ## Tecnologías utilizadas
 
-- Next.js
+- Next.js 14 (App Router)
 - React
+- TypeScript
 - Tailwind CSS
 - Framer Motion
 - Nodemailer
+- Sharp (para optimización de imágenes)
+
+## Estructura del Proyecto
+
+- `/app`: Estructura principal de la aplicación
+  - `/components`: Componentes reutilizables
+  - `/sections`: Secciones de la página principal
+  - `/api`: Endpoints de la API (formulario de contacto)
+  - `/privacidad`: Página de política de privacidad
+  - `/terminos`: Página de términos y condiciones
+- `/public`: Archivos estáticos
+- `/scripts`: Scripts de utilidad (optimización de imágenes)
+
+## Próximas Mejoras
+
+- Implementación de PWA (Progressive Web App)
+- Análisis con Google Analytics
+- Sistema de blog integrado
+- Internacionalización (i18n)
+
+## Licencia
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ## Learn More
 
