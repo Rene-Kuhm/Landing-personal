@@ -12,9 +12,9 @@ if (!fs.existsSync(optimizedDirectory)) {
 
 // Configuraciones de optimización para diferentes tamaños
 const sizes = [
-  { width: 1920, suffix: 'large' },
-  { width: 1280, suffix: 'medium' },
-  { width: 640, suffix: 'small' }
+  { width: 1280, suffix: 'large' },  // Reducido de 1920px a 1280px
+  { width: 768, suffix: 'medium' },  // Reducido de 1280px a 768px 
+  { width: 400, suffix: 'small' }    // Reducido de 640px a 400px
 ];
 
 async function optimizeImage(file) {
@@ -40,15 +40,15 @@ async function optimizeImage(file) {
     // Usar AVIF para mejor compresión
     if (file.endsWith('.avif')) {
       await sharp(filePath)
-        .avif({ quality: 70 })
+        .avif({ quality: 60, effort: 9 })  // Calidad reducida, esfuerzo máximo
         .toFile(outputPath);
     } else if (file.endsWith('.png')) {
       await sharp(filePath)
-        .png({ quality: 80 })
+        .png({ quality: 70, compressionLevel: 9 })  // Calidad reducida, compresión máxima
         .toFile(outputPath);
     } else {
       await sharp(filePath)
-        .webp({ quality: 80 })
+        .webp({ quality: 65, effort: 6 })  // Calidad reducida, esfuerzo alto
         .toFile(outputPath.replace(fileInfo.ext, '.webp'));
     }
     
@@ -59,13 +59,20 @@ async function optimizeImage(file) {
       
       await sharp(filePath)
         .resize({ width: size.width, withoutEnlargement: true })
-        .avif({ quality: 70 })
+        .avif({ 
+          quality: 60,  // Calidad reducida
+          effort: 9     // Esfuerzo máximo de compresión
+        })
         .toFile(resizedPath.replace(fileInfo.ext, '.avif'));
       
       // También crear versiones WebP para navegadores sin soporte AVIF
       await sharp(filePath)
         .resize({ width: size.width, withoutEnlargement: true })
-        .webp({ quality: 80 })
+        .webp({ 
+          quality: 65,  // Calidad reducida
+          effort: 6,    // Esfuerzo alto de compresión
+          nearLossless: true  // Mejor compresión
+        })
         .toFile(resizedPath.replace(fileInfo.ext, '.webp'));
     }
     

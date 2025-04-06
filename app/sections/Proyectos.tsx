@@ -38,14 +38,15 @@ const OptimizedImage = ({ src, alt, className, priority = false }: OptimizedImag
 
     return (
         <picture>
-            <source type="image/avif" srcSet={srcSetAvif} sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px" />
-            <source type="image/webp" srcSet={srcSetWebp} sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px" />
+            <source type="image/avif" srcSet={srcSetAvif} sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 400px" />
+            <source type="image/webp" srcSet={srcSetWebp} sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 400px" />
             <Image
-                src={`/images/optimized/${fileBase}.${fileExt}`}
+                src={`${optimizedBase}-medium.${fileExt}`}
                 alt={alt}
                 fill
                 className={className}
                 loading={priority ? "eager" : "lazy"}
+                sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 400px"
             />
         </picture>
     );
