@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://kuhmdev.com/sitemap.xml 
+Sitemap: https://kuhmdev.com.ar/sitemap.xml 

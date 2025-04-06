@@ -6,7 +6,7 @@ import JsonLd from "./components/JsonLd";
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kuhmdev.com"),
+  metadataBase: new URL("https://kuhmdev.com.ar"),
   title: {
     default: "Agencia de Desarrollo Web y Consultoría | KuhmDev",
     template: "%s | KuhmDev"
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   applicationName: "KuhmDev",
   referrer: "origin-when-cross-origin",
   keywords: ["desarrollo web", "programación", "consultoría", "SEO", "marketing digital", "diseño web", "aplicaciones móviles", "Eduardo Castex", "Argentina"],
-  authors: [{ name: "KuhmDev", url: "https://kuhmdev.com" }],
+  authors: [{ name: "KuhmDev", url: "https://kuhmdev.com.ar" }],
   creator: "René Kuhm",
   publisher: "KuhmDev",
   formatDetection: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Agencia de Desarrollo Web y Consultoría | KuhmDev",
     description: "Expertos en desarrollo web, programación y consultoría digital. Creamos soluciones a medida que impulsan el crecimiento de tu negocio.",
-    url: "https://kuhmdev.com",
+    url: "https://kuhmdev.com.ar",
     siteName: "KuhmDev",
     images: [
       {
