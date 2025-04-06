@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import JsonLd from "./components/JsonLd";
+import Script from "next/script";
+import Head from "./components/Head";
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kuhmdev.com.ar"),
@@ -86,9 +93,24 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} scroll-smooth`}>
       <head>
         <JsonLd />
+        <Head />
       </head>
       <body className={inter.className}>
         {children}
+
+        {/* Carga diferida de scripts */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXX');
+          `}
+        </Script>
       </body>
     </html>
   );

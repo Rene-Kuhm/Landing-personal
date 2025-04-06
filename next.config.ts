@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion', 'react-icons'],
   },
+  // Optimización para mejorar el rendimiento
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Compresión de assets
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
 
 export default nextConfig;
