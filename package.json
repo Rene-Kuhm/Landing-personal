@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@types/nodemailer": "^6.4.17",
@@ -17,7 +18,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "react-intersection-observer": "^9.16.0"
+    "react-intersection-observer": "^9.16.0",
+    "sharp": "^0.34.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

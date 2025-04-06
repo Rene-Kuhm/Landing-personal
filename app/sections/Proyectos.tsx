@@ -6,6 +6,51 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiExternalLink, FiPlus, FiGithub } from 'react-icons/fi';
 
+interface OptimizedImageProps {
+    src: string;
+    alt: string;
+    className?: string;
+    priority?: boolean;
+}
+
+// Componente para mostrar imágenes optimizadas
+const OptimizedImage = ({ src, alt, className, priority = false }: OptimizedImageProps) => {
+    // Construir rutas para las diferentes versiones optimizadas
+    const baseFilename = src.split('/').pop() || '';
+    const fileInfo = baseFilename.split('.');
+    const fileBase = fileInfo[0];
+    const fileExt = fileInfo[1];
+
+    const optimizedBase = `/images/optimized/${fileBase}`;
+
+    // Construir srcset con diferentes tamaños
+    const srcSetAvif = [
+        `${optimizedBase}-small.avif 640w`,
+        `${optimizedBase}-medium.avif 1280w`,
+        `${optimizedBase}-large.avif 1920w`,
+    ].join(', ');
+
+    const srcSetWebp = [
+        `${optimizedBase}-small.webp 640w`,
+        `${optimizedBase}-medium.webp 1280w`,
+        `${optimizedBase}-large.webp 1920w`,
+    ].join(', ');
+
+    return (
+        <picture>
+            <source type="image/avif" srcSet={srcSetAvif} sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px" />
+            <source type="image/webp" srcSet={srcSetWebp} sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px" />
+            <Image
+                src={`/images/optimized/${fileBase}.${fileExt}`}
+                alt={alt}
+                fill
+                className={className}
+                loading={priority ? "eager" : "lazy"}
+            />
+        </picture>
+    );
+};
+
 // Proyectos funcionales con imágenes reales
 const proyectos = [
     {
@@ -127,14 +172,21 @@ const Proyectos = () => {
                             className="group bg-white dark:bg-[#1a1a2e] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                         >
                             <div className="relative overflow-hidden h-64">
-                                <Image
-                                    src={imageErrors[proyecto.id] ? proyecto.fallbackImage : proyecto.image}
-                                    alt={proyecto.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                    unoptimized
-                                    onError={() => handleImageError(proyecto.id)}
-                                />
+                                {imageErrors[proyecto.id] ? (
+                                    <Image
+                                        src={proyecto.fallbackImage}
+                                        alt={proyecto.title}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                ) : (
+                                    <OptimizedImage
+                                        src={proyecto.image}
+                                        alt={proyecto.title}
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        priority={proyecto.id === 1} // Cargar con prioridad la primera imagen
+                                    />
+                                )}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                                     <div className="p-6 w-full">
                                         <div className="flex justify-between items-center">
