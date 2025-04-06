@@ -2,33 +2,18 @@
 
 import React from 'react';
 
+// Este componente carga los estilos críticos de manera inline
+// para evitar que bloqueen el renderizado inicial
 export default function Head() {
   return (
     <>
-      {/* Precargar fuentes críticas */}
-      <link
-        rel="preload"
-        href="/_next/static/media/c9a5bc6a7c948fb0-s.p.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-
-      {/* Preload critical assets */}
-      <link
-        rel="preload"
-        href="/images/optimized/logo-small.avif"
-        as="image"
-        type="image/avif"
-        fetchPriority="high"
-      />
-
-      {/* Estilos críticos inlineados */}
+      {/* Estilos críticos incrustados para evitar bloqueo de renderizado */}
       <style jsx global>{`
         :root {
           --primary: #FF6B49;
           --primary-dark: #E55A3D;
           --secondary: #4E295B;
+          --accent: #743F87;
           --foreground-rgb: 33, 33, 33;
           --background-start-rgb: 255, 255, 255;
           --background-end-rgb: 245, 245, 250;
@@ -44,13 +29,14 @@ export default function Head() {
         
         body {
           color: rgb(var(--foreground-rgb));
-          background: linear-gradient(
-              to bottom,
-              transparent,
-              rgb(var(--background-end-rgb))
-            )
-            rgb(var(--background-start-rgb));
-          min-height: 100vh;
+          background: rgb(var(--background-start-rgb));
+        }
+        
+        .text-gradient {
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-image: linear-gradient(90deg, var(--secondary), var(--primary));
         }
         
         .container-custom {
@@ -62,11 +48,9 @@ export default function Head() {
           padding-right: 1rem;
         }
         
-        .text-gradient {
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-image: linear-gradient(90deg, var(--secondary), var(--primary));
+        h1 {
+          font-weight: bold;
+          line-height: 1.2;
         }
       `}</style>
     </>

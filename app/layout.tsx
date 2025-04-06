@@ -92,30 +92,43 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} scroll-smooth`}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="preload"
+          href="/images/logo.png"
+          as="image"
+          type="image/png"
+          fetchPriority="high"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
         <JsonLd />
         <Head />
       </head>
       <body className={inter.className}>
         {children}
 
-        {/* Carga diferida de scripts de analytics con estrategia lazyOnload */}
+        {/* Carga muy diferida de scripts de analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"
           strategy="lazyOnload"
+          defer
         />
         <Script id="google-analytics" strategy="lazyOnload">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXX', {
-              send_page_view: false
-            });
-            // Enviar pageview con retraso después de que la página se cargue completamente
             window.addEventListener('load', function() {
               setTimeout(function() {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-XXXXXXXX', {
+                  send_page_view: false,
+                  page_load_time_metrics: true
+                });
                 gtag('event', 'page_view');
-              }, 2000);
+              }, 3000);
             });
           `}
         </Script>

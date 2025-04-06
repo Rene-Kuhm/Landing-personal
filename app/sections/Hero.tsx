@@ -1,17 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FiArrowRight, FiCheck } from 'react-icons/fi';
 import Button from '../components/Button';
 
+// Cargar en primer lugar el contenido crucial (LCP)
 const Hero = () => {
-    const [isLoaded, setIsLoaded] = useState(false);
-
-    useEffect(() => {
-        // Marcar como cargado después del montaje inicial
-        setIsLoaded(true);
-    }, []);
-
     const benefitItems = [
         'Expertos en desarrollo web',
         'Soluciones personalizadas',
@@ -26,21 +20,19 @@ const Hero = () => {
                     <div className="text-center lg:text-left">
                         <span
                             className="inline-block px-4 py-1.5 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-sm font-medium mb-4"
-                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}
                         >
                             Agencia de Desarrollo Web & Consultoría
                         </span>
 
+                        {/* Esta es la parte principal que debe cargarse primero (LCP) */}
                         <h1
                             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-                            style={{ opacity: 1 }}
                         >
                             Transformamos <span className="text-gradient">ideas</span> en <span className="text-gradient">experiencias digitales</span> excepcionales
                         </h1>
 
                         <p
                             className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0"
-                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s ease 0.2s' }}
                         >
                             Somos expertos en desarrollo web, programación y consultoría digital.
                             Creamos soluciones a medida que impulsan el crecimiento de tu negocio.
@@ -48,7 +40,6 @@ const Hero = () => {
 
                         <div
                             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
-                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s ease 0.3s' }}
                         >
                             <Button href="#contacto" variant="primary">
                                 Solicita una consulta <FiArrowRight className="ml-2" />
@@ -58,10 +49,7 @@ const Hero = () => {
                             </Button>
                         </div>
 
-                        <div
-                            className="grid grid-cols-2 gap-3 max-w-md mx-auto lg:mx-0"
-                            style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s ease 0.4s' }}
-                        >
+                        <div className="grid grid-cols-2 gap-3 max-w-md mx-auto lg:mx-0">
                             {benefitItems.map((item, index) => (
                                 <div key={index} className="flex items-center">
                                     <FiCheck className="text-[var(--primary)] mr-2 flex-shrink-0" />
@@ -71,9 +59,9 @@ const Hero = () => {
                         </div>
                     </div>
 
+                    {/* Esta parte es secundaria, puede cargarse después */}
                     <div
-                        className="relative"
-                        style={{ opacity: isLoaded ? 1 : 0, transform: `scale(${isLoaded ? 1 : 0.9})`, transition: 'opacity 0.6s, transform 0.6s' }}
+                        className="relative hidden lg:block"
                     >
                         <div className="relative z-10 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] p-1 rounded-2xl shadow-2xl">
                             <div className="bg-white dark:bg-[#0f0f1e] rounded-xl p-6">

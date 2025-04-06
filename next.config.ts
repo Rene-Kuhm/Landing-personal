@@ -4,26 +4,25 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    minimumCacheTTL: 60,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-      },
-    ],
+    remotePatterns: [],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
+    optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'react-icons'],
   },
   // Optimización para mejorar el rendimiento
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
+  compiler: process.env.NODE_ENV === 'production' ? {
+    removeConsole: {
+      exclude: ['error', 'warn'],
+    }
+  } : {},
   // Compresión de assets
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;
