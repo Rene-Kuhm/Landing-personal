@@ -114,11 +114,7 @@ const Proyectos = () => {
     });
 
     // Estado para controlar errores de carga de imágenes
-    const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({});
-
-    const handleImageError = (id: number) => {
-        setImageErrors(prev => ({ ...prev, [id]: true }));
-    };
+    const [imageErrors] = useState<{ [key: number]: boolean }>({});
 
     const filteredProjects = filter === 'todos'
         ? proyectos
